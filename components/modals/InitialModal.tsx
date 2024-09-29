@@ -5,9 +5,7 @@ import {
     DialogDescription,
     DialogFooter,
     DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog"
+    DialogTitle,  } from "@/components/ui/dialog"
 
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod"; 
@@ -15,7 +13,6 @@ import { useForm } from "react-hook-form";
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -57,7 +54,7 @@ export const InitialModal = () => {
 
     if(!isMounted){
         return null;
-        
+
     }
     return (
        <Dialog open> 
