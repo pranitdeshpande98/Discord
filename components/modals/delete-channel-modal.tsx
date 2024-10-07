@@ -13,7 +13,6 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import qs from "query-string";
 
-
 export const DeleteChannelModal = () => {
 
     const {isOpen, onClose, type, data } = useModal();
@@ -33,6 +32,8 @@ export const DeleteChannelModal = () => {
                 }
             })
             await axios.delete(url);
+             // Mutate SWR cache to remove the channel from the cache
+         
             onClose();
             router.refresh();
             router.push(`/servers/${server?.id}`);
