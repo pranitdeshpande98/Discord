@@ -1,4 +1,4 @@
-import { currentProfilePages } from "@/lib/current-profile-pages";
+import { currentProfile } from "@/lib/current-profile";
 import { db } from "@/lib/db";
 import { NextApiResponseServerIo } from "@/types";
 import { NextApiRequest } from "next";
@@ -12,10 +12,9 @@ export default async function handler(
     }
 
     try{
-        const profile = await currentProfilePages(req);
+        const profile = await currentProfile();
         const {content, fileUrl} = req.body;
         const {serverId, channelId} = req.query;
-
         if(!profile){
             return res.status(401).json({error:"Unauthorized"});
         }
@@ -84,8 +83,6 @@ export default async function handler(
 
         const channelKey = `chat:${channelId}:messages`;
         res?.socket?.server?.io?.emit(channelKey, message);
-        res.status(200).json({message: "Message sent successfully"});
-
     } catch (error){
         console.log(error);
         return res.status(500).json({message : "Internal Error"});
