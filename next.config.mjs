@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack:(config) => {
+    reactStrictMode: true,  // This helps catch potential issues during development
+    webpack: (config) => {
         config.externals.push({
             "utf-8-validate": "commonjs utf-8-validate",
-            bufferutil:"commonjs bufferutil"
+            bufferutil: "commonjs bufferutil",
         });
-        return config
+        return config;
     },
     images: {
         remotePatterns: [
@@ -15,6 +16,20 @@ const nextConfig = {
                 pathname: '/**',
             },
         ],
+    },
+    // If you have dynamic routes, enable server-side rendering here
+    async headers() {
+        return [
+            {
+                source: '/api/:path*',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store',
+                    },
+                ],
+            },
+        ];
     },
 };
 
