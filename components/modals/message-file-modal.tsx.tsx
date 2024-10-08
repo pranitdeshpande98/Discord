@@ -67,8 +67,7 @@ export const MessageFileModal = () => {
     return (
       <Dialog open={isModalOpen} onOpenChange={handleClose}>
       <DialogContent 
-        className="bg-white text-black p-4 md:p-6 overflow-hidden max-w-[90vw] md:max-w-[800px]" 
-        style={{ minWidth: '320px' }}
+        className="bg-white text-black p-0 overflow-hidden"
       >
         <DialogHeader className="pt-8 px-6">
           <DialogTitle className="text-2xl font-bold text-center">
