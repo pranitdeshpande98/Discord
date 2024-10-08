@@ -35,6 +35,7 @@ export const DeleteChannelModal = () => {
             onClose();
             router.refresh();
             router.push(`/servers/${server?.id}`);
+            window.location.reload(); // Force full page reload after pushing
         } catch (error){    
             console.log(error);
         } finally {
