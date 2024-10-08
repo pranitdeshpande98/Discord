@@ -9,10 +9,11 @@ export default async function handler(
 ) {
     if(req.method !== "POST"){
         return res.status(405).json({error: "Method not allowed"});
-    }
-
+    }   
+    
     try{
         const profile = await currentProfile();
+        
         const {content, fileUrl} = req.body;
         const {serverId, channelId} = req.query;
         if(!profile){
@@ -83,8 +84,10 @@ export default async function handler(
 
         const channelKey = `chat:${channelId}:messages`;
         res?.socket?.server?.io?.emit(channelKey, message);
+        
     } catch (error){
         console.log(error);
         return res.status(500).json({message : "Internal Error"});
     }
+    
 }

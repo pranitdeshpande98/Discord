@@ -16,7 +16,6 @@ export const FileUpload = ({
 }: FileUploadProps) => {
     const [fileformat, setfileformat] = useState("");
     const fileType = fileformat?.split('/')[0];
-    console.log(fileType);
     if (value && fileType !== 'application') {
       return (
         <div className="relative h-20 w-20">
