@@ -52,14 +52,14 @@ const MemberIdPage = async({
             <ChatHeader imageUrl={otherMember.profile.imageUrl} name={otherMember.profile.name} serverId={params.serverId} type="conversation"/>
             <ChatMessages member={currentMember} name={otherMember.profile.name} chatId={conversation.id} 
                 type="conversation" apiUrl="/api/direct-messages" paramKey="conversationId" paramValue={conversation.id} socketUrl="/api/socket/direct-messages" socketQuery={{
-                    conversationID: conversation.id,
+                    conversationId: conversation.id,
                 }}
             />
             <ChatInput 
                name={otherMember.profile.name}
                type="conversation" 
                apiUrl="/api/socket/direct-messages" query={{
-                conversationID: conversation.id,
+                conversationId: conversation.id,
             }}
             />
         </div>
